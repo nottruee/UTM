@@ -24,7 +24,7 @@ struct VMConfigNetworkView: View {
     @Binding var config: UTMQemuConfigurationNetwork
     @Binding var system: UTMQemuConfigurationSystem
     @State private var hostNetworks: [UTMConfigurationHostNetwork] = []
-    @State private var showAdvanced: Bool = false
+    @Binding var showAdvanced: Bool
     
     private func loadData() {
         hostNetworks = (try? PropertyListDecoder().decode([UTMConfigurationHostNetwork].self, from: hostNetworksData)) ?? []
