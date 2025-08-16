@@ -18,6 +18,14 @@ import SwiftUI
 
 struct VMConfigNetworkPortForwardView: View {
     @Binding var config: UTMQemuConfigurationNetwork
+    @State private var showAdvancedNetworking: Bool = false // here we go again idk what to put this 
+    var body: some View {
+        VMConfigNetworkView(
+            config: $config,
+            system: $system,
+            showAdvanced: $showAdvancedNetworking // pass the binding down
+        )
+    }
     
     var body: some View {
         Section(header: Text("Port Forward")) {
@@ -44,6 +52,8 @@ struct VMConfigNetworkPortForwardView: View {
                         Text("New")
                 })
             }
+        }.onAppear {
+            showAdvancedNetworking = false // i can't type why can't i spell wok
         }
     }
     
